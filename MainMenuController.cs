@@ -5,6 +5,7 @@ public class MainMenuController : MonoBehaviour
 {
     public void PlayGame()
     {
+        PlayerController.IsDead = false; 
         SceneManager.LoadScene("Game");
     }
 

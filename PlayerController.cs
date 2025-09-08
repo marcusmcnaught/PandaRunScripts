@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     public float movementDelayTimer = 0.2f; // Delay to prevent multiple inputs
     public float sideSpeed = 5f; // Speed of side movement
     public SpawnManager spawnManager;
-    public static bool IsDead { get; private set; } = false;
+    public static bool IsDead { get; set; }
 
     private static float[] _tracks;
     private int _currentTrackIndex;
