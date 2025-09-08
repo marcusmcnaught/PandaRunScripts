@@ -6,14 +6,14 @@ public class PlayerController : MonoBehaviour
 {
     public InputAction moveAction;
     public float movementDelayTimer = 0.2f; // Delay to prevent multiple inputs
-    public GameObject trackPrefab; // Prefab for the track to spawn
     public float sideSpeed = 5f; // Speed of side movement
     public SpawnManager spawnManager;
     public static bool IsDead { get; private set; } = false;
 
     private static float[] _tracks;
     private int _currentTrackIndex;
-    private Vector3 _targetPosition;    
+    private Vector3 _targetPosition;
+    private PlayerAnimationStateController playerAnim;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
         moveAction.Enable();
         _tracks = new[] { 11f, 15f, 19f }; // Left, Center, Right tracks
         _currentTrackIndex = 1; // Start at the center track
+        playerAnim = GetComponent<PlayerAnimationStateController>();
     }
 
     // Update is called once per frame
@@ -81,6 +82,7 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Player hit an obstacle!");
             IsDead = true;
+            playerAnim.PlayDeathAnimation(IsDead);            
             sideSpeed = 0f; // Stop player movement
             StartCoroutine(DeathTimer());
         }

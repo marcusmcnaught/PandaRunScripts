@@ -9,12 +9,10 @@ public class PlayerAnimationStateController : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void PlayDeathAnimation(bool isDead)
     {
-        if (PlayerController.IsDead)
-        {
-            animator.SetBool("isDead", true);
-        }
+        animator.SetBool("isDead", isDead);
     }
+
+
 }

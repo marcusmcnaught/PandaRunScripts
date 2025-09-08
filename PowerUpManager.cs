@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PowerUpManager : MonoBehaviour
@@ -7,6 +8,10 @@ public class PowerUpManager : MonoBehaviour
     public ScoreCounter scoreCounter;
     public void OnTriggerEnter(Collider other)
     {
+        if (other.CompareTag("SpawnTrack"))
+        {
+            return;
+        }
         // Check if the colliding object is a power-up
         if (other.CompareTag("Point"))
         {
